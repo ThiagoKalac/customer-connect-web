@@ -56,11 +56,11 @@ const RegisterPage = () => {
                               <p>{errors.email?.message}</p>
 
                               <label htmlFor="password">Senha</label>
-                              <Input type="text" placeholder=" Digite uma senha segura" {...register("password")} />
+                              <Input type="password" placeholder=" Digite uma senha segura" {...register("password")} />
                               <p>{errors.password?.message}</p>
 
                               <label htmlFor="confirmPassword">Confirmação de senha:</label>
-                              <Input type="text" placeholder=" Digite uma senha segura" {...register("confirmPassword")} />
+                              <Input type="password" placeholder=" Digite uma senha segura" {...register("confirmPassword")} />
                               <p>{errors.confirmPassword?.message}</p>
                               
                               <button type="submit">Cadastrar</button>
