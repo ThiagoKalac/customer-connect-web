@@ -24,7 +24,6 @@ const Header = styled.header`
           gap: 8px;
 
           & > img{
-               /* width: 197px; */
                height: 100px;
           }
 

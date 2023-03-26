@@ -1,9 +1,20 @@
 import styled from "styled-components";
+import login from "../../assets/forms/login.png"
 
 const LoginBackground = styled.div`
      background-color: var(--color-bg);
      width: 100vw;
      min-height: 100vh;
+     background-image: url(${login});
+     background-size: auto 100%;
+     background-repeat: no-repeat;
+     background-position: center;
+
+     @media(min-width: 830px){
+          & {
+               background-position: right;
+          }
+     }
 `
 
 
@@ -16,13 +27,14 @@ const Container = styled.div`
      max-width: 1200px;
      height: 100%;
      margin: 0 auto;
+     
 
      & > div {
           display: flex;
           justify-content: space-between;
           align-items: baseline;
           width: 100%;
-          max-width: 800px;
+          max-width: 600px;
           padding: 16px;
           animation: backInLeft 0.8s ease-out;
           
@@ -54,16 +66,17 @@ const Container = styled.div`
 
 const LoginForm = styled.form`
      width: 100%;
-     max-width: 800px;
-     height: 100%;
+     max-width: 600px;
+     height: 324px;
      display: flex;
      flex-direction: column;
      gap:7px;
      padding: 16px;
      border-radius: 4px;
-     background-color: var(--color-bg-section);
+     background-color: ${({ dark }) => (dark ? "#2b3136b3" : "#b0b0b06e")};;
      position: relative;
-
+     
+   
      & > h2{
           font-family:var(--text);
           font-size: 18px;
@@ -103,7 +116,14 @@ const LoginForm = styled.form`
                border-radius: 4px;
                font-family: var(--text);
                font-weight: var(--f-weight-1);
-     }
+               height: 40px;
+               filter:brightness(0.8);
+
+               &:hover,&:focus,&:active{
+                    filter:brightness(1.1);
+                    transition: 0.2s ease-in-out;
+               }
+     }    
 
      p {
                font-family: var(--text);
