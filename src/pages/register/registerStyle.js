@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import teste from "../../assets/forms/teste.svg"
-import register from "../../assets/forms/register.gif"
+import register from "../../assets/forms/register.svg"
 
 const RegisterBackground = styled.div`
      background-color: var(--color-bg);
@@ -65,7 +64,6 @@ const RegisterForm = styled.form`
      padding: 16px;
      border-radius: 4px;
      background-color: var(--color-bg-section);
-     animation:fadeIn 2.5s ease;
      position: relative;
 
      & > h2{
@@ -79,7 +77,7 @@ const RegisterForm = styled.form`
      }
 
      & > .registerForm_bg {
-          background-image: url(${teste});
+          background-image: url(${register});
           background-repeat: no-repeat;
           background-size: 100%;
           background-position: center;
