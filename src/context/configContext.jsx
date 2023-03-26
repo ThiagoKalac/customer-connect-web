@@ -28,7 +28,7 @@ const ConfigProvider = ({ children }) => {
     }, [indexImg]);
       
      const verifyDarkModeLocalStorage = () => {
-       const dark = localStorage.getItem("@CustommerConnect");
+       const dark = localStorage.getItem("@CustommerConnectDarkMode");
    
        if (dark === "true") {
          document.querySelector("html")?.classList.add("dark");
@@ -39,11 +39,11 @@ const ConfigProvider = ({ children }) => {
      const handleDarkMode = () => {
        if (darkMode) {
          setDarkMode(false);
-         localStorage.setItem("@CustommerConnect", false);
+         localStorage.setItem("@CustommerConnectDarkMode", false);
          document.querySelector("html")?.classList.remove("dark");
        } else {
          setDarkMode(true);
-         localStorage.setItem("@CustommerConnect", true);
+         localStorage.setItem("@CustommerConnectDarkMode", true);
          document.querySelector("html")?.classList.add("dark");
        }
      };

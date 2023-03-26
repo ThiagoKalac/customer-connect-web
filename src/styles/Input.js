@@ -13,7 +13,7 @@ const Input = styled.input`
 
 &::placeholder{
      color:var(--gray-1);
-     font: var(--input)
+     font: var(--input);
 }
 
 &:focus{
