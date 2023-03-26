@@ -2,7 +2,7 @@ import { ContainerLandingPage, Header, Main } from "./ladinPageStyle"
 import LogoLigth from "../../assets/logo/Ligth.png"
 import LogoDark from "../../assets/logo/Dark.png"
 import { useContext } from "react"
-import { ConfigContext } from "../../context/config"
+import { ConfigContext } from "../../context/configContext"
 import { MdLightbulb as Bulb } from "react-icons/md"
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';

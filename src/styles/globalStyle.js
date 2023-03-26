@@ -7,7 +7,9 @@ const GlobalStyle = createGlobalStyle`
      --color-btn-dark: #343434;
      --color-shadow-landinpage: #6c757d;
      --color-bg-button: #20c997;
-    
+     --color-bg-section: #828282;
+     --color-bg-form: #535658;
+
      /* Shades of gray  */
      --gray-0: #ffffff;
      --gray-1: #ececec;
@@ -36,7 +38,9 @@ const GlobalStyle = createGlobalStyle`
      --color-btn-dark: #dacf04;
      --color-shadow-landinpage: #343a40;
      --color-bg-button: #00ff43;
-     
+     --color-bg-section:#212529;
+     --color-bg-form: #2b3136;
+
      /* Shades of gray */
      --gray-0: #171717;
      --gray-1: #343434;
