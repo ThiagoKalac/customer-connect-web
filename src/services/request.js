@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const baseUrl = axios.create({
-  baseURL: "https://localhost:3000",
+  baseURL: "http://localhost:3000",
   setTimeout: 10000,
 });
 

@@ -5,24 +5,23 @@ import { ConfigContext } from "../../context/configContext";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "./registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {  Section } from "./registerStyles";
 import { Input } from "../../styles/Input";
 import LogoLigth from "../../assets/logo/Ligth.png"
 import LogoDark from "../../assets/logo/Dark.png"
+import { ClientContext } from "../../context/clientContext";
 
 
 const RegisterPage = () => {
-     const {darkMode , handleDarkMode} = useContext(ConfigContext) 
+     const { darkMode, handleDarkMode } = useContext(ConfigContext) 
+     const {clientRegister} = useContext(ClientContext) 
      const navigate = useNavigate();    
 
      const { register, handleSubmit, formState: { errors } } = useForm({
           resolver: yupResolver(registerSchema),
      })
 
-     const subimitRegisterUser = async (data) => {
-
-          console.log(data)
-         
+     const subimitRegisterClient = async (data) => {
+          clientRegister(data)
      }
 
      return (
@@ -33,7 +32,7 @@ const RegisterPage = () => {
                          <img src={darkMode? LogoDark : LogoLigth } alt="logo Customer-Connect" />
                          <button  onClick={()=> navigate("/")}>Voltar</button>
                     </div>
-                    <RegisterForm onSubmit={handleSubmit(subimitRegisterUser)} dark={darkMode}>
+                    <RegisterForm onSubmit={handleSubmit(subimitRegisterClient)} dark={darkMode}>
                          <h2>Crie sua conta</h2>
                          
                          <div className="registerForm_bg"/>
@@ -57,11 +56,11 @@ const RegisterPage = () => {
                               <p>{errors.email?.message}</p>
 
                               <label htmlFor="password">Senha</label>
-                              <Input type="password" placeholder=" Digite uma senha segura" {...register("password")} />
+                              <Input type="text" placeholder=" Digite uma senha segura" {...register("password")} />
                               <p>{errors.password?.message}</p>
 
                               <label htmlFor="confirmPassword">Confirmação de senha:</label>
-                              <Input type="password" placeholder=" Digite uma senha segura" {...register("confirmPassword")} />
+                              <Input type="text" placeholder=" Digite uma senha segura" {...register("confirmPassword")} />
                               <p>{errors.confirmPassword?.message}</p>
                               
                               <button type="submit">Cadastrar</button>
