@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ContainerLandingPage = styled.div`
      background-color: var(--color-bg);
      width: 100vw;
-     height: 100vh;
+     min-height: 100vh;
      `
 
 const Header = styled.header`
@@ -123,6 +123,7 @@ const Main = styled.main`
                color: #171717;
                letter-spacing: 2px;
                margin: 16px 0;
+               cursor: pointer;
           }
 
           button:hover{

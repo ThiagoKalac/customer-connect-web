@@ -8,9 +8,9 @@ import Connected from "../assets/carousel/connected.gif"
 import ConnectedDark from "../assets/carousel/connected_dark.gif"
 
 
-export const ConfigContext = createContext({});
+const ConfigContext = createContext({});
 
-export const ConfigProvider = ({ children }) => {
+const ConfigProvider = ({ children }) => {
      const [darkMode, setDarkMode] = useState(false);
      const [indexImg, setIndexImg] = useState(0)
   
@@ -84,4 +84,7 @@ export const ConfigProvider = ({ children }) => {
          {children}
        </ConfigContext.Provider>
      );
-   };
+};
+   
+
+export { ConfigContext , ConfigProvider }

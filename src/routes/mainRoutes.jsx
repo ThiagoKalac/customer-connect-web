@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { LandingPage } from "../pages/landingPage/ladingpage";
 import { Login } from "../pages/login/login";
-import { Register } from "../pages/register/register";
+import { RegisterPage } from "../pages/register/register";
 
 
 
@@ -10,7 +10,7 @@ const MainRoutes = () => {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/register" element={<RegisterPage />} />
     </Routes>
   );
 };
