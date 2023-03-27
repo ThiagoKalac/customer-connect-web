@@ -23,7 +23,7 @@ const ConfigProvider = ({ children }) => {
      useEffect(() => {
       const interval = setInterval(() => {
            setIndexImg((prevIndex) => (prevIndex + 1) % indexImg.length);
-      }, 30000);
+      }, 10000);
       return () => clearInterval(interval);
     }, [indexImg]);
       

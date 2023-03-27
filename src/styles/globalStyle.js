@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
      --color-bg-section: #828282;
      --color-bg-form: #535658;
      --color-text-errors: #bd1100;
+     --color-text-welcome: #ffffff;
 
      /* Shades of gray  */
      --gray-0: #ffffff;
@@ -41,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
      --color-bg-button: #00ff43;
      --color-bg-section:#212529;
      --color-bg-form: #2b3136;
+     --color-text-welcome:  #00ff43;
 
      /* Shades of gray */
      --gray-0: #171717;

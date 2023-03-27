@@ -10,8 +10,6 @@ const ClientProvider = ({ children }) => {
 
      const navigate = useNavigate()
 
-
-
      useEffect(() => {
           (async () => {
                const token = localStorage.getItem("@CustomerConnectToken")
@@ -20,12 +18,15 @@ const ClientProvider = ({ children }) => {
                     try {
                          const responseApi = await getProfileClientApi(token)
                          setClient(responseApi.data)
-                         navigate("/dashboard")
+                         navigate(`/dashboard/${responseApi.data.nickname}`)
                          
                     } catch (error) {
-                         localStorage.clear()
+                         console.log(error)
+                         localStorage.removeItem("@CustomerConnectToken")
                          navigate("/")
                     } 
+               } else {
+                    navigate("/")
                }
           })()
      },[])
@@ -89,7 +90,7 @@ const ClientProvider = ({ children }) => {
                });
                
               
-               // navigate("/dashboard")
+               navigate(`/dashboard/${responseClient.data.nickname}`)
 
           } catch (error) {
                toast.update(loadingToast, {
@@ -109,7 +110,8 @@ const ClientProvider = ({ children }) => {
      }
      return <ClientContext.Provider value={{
           clientRegister,
-          sessionLogin
+          sessionLogin,
+          client
           }}>
           {children}
      </ClientContext.Provider>
