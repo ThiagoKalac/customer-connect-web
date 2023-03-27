@@ -61,7 +61,7 @@ const HeaderContent = styled.div`
           }    
 
           & > .btn-dark{
-               background-color: #6c6a6a;
+               background-color: #6c6a6a40;
                color: var(--gray-5); 
                & > svg{
                     color: var(--color-btn-dark);

@@ -7,6 +7,7 @@ const ClientContext = createContext({});
 
 const ClientProvider = ({ children }) => { 
      const [client, setClient] = useState(null)
+     const [view, setView] = useState(false)
 
      const navigate = useNavigate()
 
@@ -108,11 +109,15 @@ const ClientProvider = ({ children }) => {
                });
           }
      }
-     return <ClientContext.Provider value={{
-          clientRegister,
-          sessionLogin,
-          client
-          }}>
+     return <ClientContext.Provider value={
+          {
+               clientRegister,
+               sessionLogin,
+               client,
+               view,
+               setView
+          }
+     }>
           {children}
      </ClientContext.Provider>
 }
