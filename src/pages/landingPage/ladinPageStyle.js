@@ -60,11 +60,7 @@ const Header = styled.header`
           font-weight: var(--f-weight-2);
           font-family: var(--text);
 
-          /* filter: brightness(30);
-          box-shadow: inset -2px 3px 5px 0px #cec402; */
-
           & > svg {
-               /* color: ${({ dark }) => (dark ? "#212529" : "#828282")}; */
                color : var(--color-btn-dark);
                
                font-size: 24px;
