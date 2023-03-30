@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { clientRegisterApi, sessionLoginApi, getProfileClientApi } from "../services/request";
+import { clientRegisterApi, sessionLoginApi, getProfileClientApi, updateClientApi } from "../services/request";
 import { toast, Flip } from "react-toastify";
 
 const ClientContext = createContext({});
@@ -109,13 +109,55 @@ const ClientProvider = ({ children }) => {
                });
           }
      }
+
+     const clientUpdate = async (token, data) => { 
+          const loadingToast = toast.loading("Carregando...")
+
+          try {
+               const responseClient = await updateClientApi(token,data)
+                            
+               setClient(responseClient)
+               
+               toast.update(loadingToast, {
+                    render: `Atualizado com sucesso! ${responseClient.nickname}`,
+                    type: "success",
+                    isLoading: false,
+                    autoClose: 2000,
+                    theme: "dark",
+                    position: "top-center",
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Flip
+               });
+      
+          } catch (error) {
+               console.log(error.response.data.message)
+               toast.update(loadingToast, {
+                    render: error.response.message,
+                    type: "error",
+                    isLoading: false,
+                    autoClose: 2000,
+                    theme: "dark",
+                    position: "top-center",
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Flip
+               });
+          }
+     }
+
      return <ClientContext.Provider value={
           {
                clientRegister,
                sessionLogin,
                client,
                view,
-               setView
+               setView,
+               clientUpdate
           }
      }>
           {children}

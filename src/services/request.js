@@ -27,4 +27,19 @@ const getProfileClientApi = async (token) => {
   return client
 }
 
-export { clientRegisterApi, sessionLoginApi, getProfileClientApi }
+const updateClientApi = async (token, data) => {
+  console.log(token)
+  const client = await fetch("http://localhost:3000/client", {
+    method: "PATCH",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+  .catch(erros => console.log(erros))
+
+  return client
+}
+
+export { clientRegisterApi, sessionLoginApi, getProfileClientApi,updateClientApi }

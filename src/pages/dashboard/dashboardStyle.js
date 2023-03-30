@@ -11,11 +11,14 @@ const ContainerDashboard = styled.div`
      width: 100%;
      max-width: 1200px;
      margin: 24px auto;
-     padding: 0px 16px;
      border-radius: 6px;
      background-color: var(--gray-1);
 
-        
+     & > div{
+          background-color: var(--gray-0);
+          height: 50px;
+          width: 100%;
+     }   
      
      & > .list{
           display: flex;

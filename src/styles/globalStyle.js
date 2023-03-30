@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
      --color-bg-button: #20c997;
      --color-bg-section: #828282;
      --color-bg-form: #535658;
-     --color-text-errors: #bd1100;
+     --color-text-errors: #e74c3c;
      --color-text-welcome: #ffffff;
      --color-bg-btn-dash: #c7c7c7;
 
