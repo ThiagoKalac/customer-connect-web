@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { clientRegisterApi, sessionLoginApi, getProfileClientApi, updateClientApi } from "../services/request";
+import { clientRegisterApi, sessionLoginApi, getProfileClientApi, updateClientApi, deleteClientApi } from "../services/requestClient";
 import { toast, Flip } from "react-toastify";
 
 const ClientContext = createContext({});
@@ -150,6 +150,47 @@ const ClientProvider = ({ children }) => {
           }
      }
 
+     const clientDelete = async (token) => {
+          const loadingToast = toast.loading("Carregando...")
+
+          try {
+               const responseClient = await deleteClientApi(token)
+                    
+               
+               toast.update(loadingToast, {
+                    render: `Deletado com sucesso!`,
+                    type: "success",
+                    isLoading: false,
+                    autoClose: 2000,
+                    theme: "dark",
+                    position: "top-center",
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Flip
+               });
+
+               navigate("/")
+      
+          } catch (error) {
+               console.log(error.response.data.message)
+               toast.update(loadingToast, {
+                    render: error.response.message,
+                    type: "error",
+                    isLoading: false,
+                    autoClose: 2000,
+                    theme: "dark",
+                    position: "top-center",
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Flip
+               });
+          }
+     }
+
      return <ClientContext.Provider value={
           {
                clientRegister,
@@ -157,7 +198,8 @@ const ClientProvider = ({ children }) => {
                client,
                view,
                setView,
-               clientUpdate
+               clientUpdate,
+               clientDelete
           }
      }>
           {children}

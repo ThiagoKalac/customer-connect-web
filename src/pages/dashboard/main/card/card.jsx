@@ -24,7 +24,7 @@ const Card = ({
     emailsExtra,
   });
   const [validationErrors, setValidationErrors] = useState({});
-  const { clientUpdate } = useContext(ClientContext);
+  const { clientUpdate, clientDelete } = useContext(ClientContext);
 
   const handleSubmit = async (data) => {
     try {
@@ -61,6 +61,11 @@ const Card = ({
       }
     }
   };
+
+  const handleDelete = () => {
+    const token = localStorage.getItem("@CustomerConnectToken");
+    clientDelete(token)
+  }
 
   return (
     <CardBackground section={section}>
@@ -174,7 +179,7 @@ const Card = ({
 
         <div className="actions">
           <button onClick={() => handleSubmit(values)} className="action__btn__edit">Editar</button>
-          <button className="action__btn__del">Apagar conta</button>
+          <button onClick={() => handleDelete()} className="action__btn__del">Apagar conta</button>
         </div>
       </CardForm>
     </CardBackground>

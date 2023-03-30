@@ -42,4 +42,13 @@ const updateClientApi = async (token, data) => {
   return client
 }
 
-export { clientRegisterApi, sessionLoginApi, getProfileClientApi,updateClientApi }
+const deleteClientApi = async (token) => {
+  const client = await baseUrl.delete("/client", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  return client
+}
+
+export { clientRegisterApi, sessionLoginApi, getProfileClientApi,updateClientApi,deleteClientApi }
