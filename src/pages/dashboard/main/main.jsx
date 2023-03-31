@@ -15,8 +15,6 @@ const MainDash = () => {
 	const telephonesExtra = client?.telephonesExtra
 	const emailsExtra = client?.emailsExtra
 	const contact = client?.contact
-   
-
 
 	return (
 		<MainBackground>
@@ -32,10 +30,10 @@ const MainDash = () => {
 					emailsExtra={emailsExtra}
 				/>
 				:
-				view === 'created' ? <h1>CRIAR CONTATO</h1>
+				view === 'created' ? <Card section={'Criar Contato'}/>
 				:
 				view === 'list' ? (contact?.map(contact => 
-					<div className="list" key={contact.id}>
+					<div key={contact.id}>
 						<Card
 							section={"Meus Contatos"}
 							id={contact.id}

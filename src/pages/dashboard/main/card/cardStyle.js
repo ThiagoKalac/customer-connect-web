@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 const CardBackground = styled.div`
    width: 100%;
-   max-width: ${({ section }) => section === "Meu Perfil" ? '800px' : '400px'};
+   max-width: ${({ section }) => section !== "Meus Contatos" ? '800px' : '400px'};
    height: 100%;
    background-color: var(--gray-1);
    border-radius: 5px;
    margin: 0 auto;
-   margin-top: ${({ section }) => section === "Meu Perfil" ? 'none' : '100px'};
+   margin-top: ${({ section }) => section !== "Meus Contatos" ? 'none' : '100px'};
    padding: 16px;
 
    & > h2 {

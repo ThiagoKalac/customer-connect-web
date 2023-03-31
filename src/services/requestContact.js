@@ -7,7 +7,7 @@ const baseUrl = axios.create({
 });
 
 const updateContactApi = async (data, token, id) => {
-   console.log(token)
+   
    const client = await fetch(`http://localhost:3000/contact/${id}`, {
       method: "PATCH",
       headers: {
@@ -21,5 +21,17 @@ const updateContactApi = async (data, token, id) => {
    return client
 }
 
+const deleteContactApi = async (token, id) => {
+  
+	const response = await baseUrl.delete(`/contact/${id}`, {
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`
+		}
+	})
 
-export { updateContactApi }
+   return response
+}
+
+
+export { updateContactApi, deleteContactApi }

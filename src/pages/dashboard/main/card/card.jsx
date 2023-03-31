@@ -19,7 +19,7 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 	
   	const [validationErrors, setValidationErrors] = useState({});
   	const { clientUpdate, clientDelete } = useContext(ClientContext);
-	const { updateContact } = useContext(ContactContext);
+	const { updateContact, deleteContact } = useContext(ContactContext);
 	
 	const handleSubmit = async (data, section) => {
 		try {
@@ -64,7 +64,7 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 
 	const handleDelete = () => {
 		const token = localStorage.getItem("@CustomerConnectToken");
-		clientDelete(token);
+		section === "Meu Perfil"? clientDelete(token) : deleteContact(token,id)
 	};
 
   	return (
@@ -134,8 +134,7 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 					</button>
 					</div>
 					<span>
-					{validationErrors?.telephonesExtra &&
-						validationErrors?.telephonesExtra[i]}
+						{validationErrors?.telephonesExtra && validationErrors?.telephonesExtra[i]}
 					</span>
 				</div>
 			))}
@@ -172,8 +171,7 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 					</button>
 					</div>
 					<span>
-					{validationErrors?.emailsExtra &&
-						validationErrors?.emailsExtra[i]}
+						{validationErrors?.emailsExtra && validationErrors?.emailsExtra[i]}
 					</span>
 				</div>
 			))}
@@ -185,7 +183,7 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 				>
 					Editar
 				</button>
-				<button onClick={() => handleDelete()} className="action__btn__del">
+				<button onClick={() => handleDelete(section)} className="action__btn__del">
 					Apagar conta
 				</button>
 			</div>
