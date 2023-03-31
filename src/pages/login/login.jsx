@@ -13,63 +13,63 @@ import { useNavigate } from "react-router-dom";
 import { ClientContext } from "../../context/clientContext";
 
 const Login = () => {
-     const [typeInput, setTypeInput] = useState("password")
-     const { darkMode, handleDarkMode } = useContext(ConfigContext) 
-     const {sessionLogin} = useContext(ClientContext)
-     
-     const navigate = useNavigate();
-     const { register, handleSubmit , formState:{errors} } = useForm({
-          resolver: yupResolver(loginSchema),
-     })
+	const [typeInput, setTypeInput] = useState("password")
+	const { darkMode, handleDarkMode } = useContext(ConfigContext) 
+	const {sessionLogin} = useContext(ClientContext)
+	
+	const navigate = useNavigate();
+	const { register, handleSubmit , formState:{errors} } = useForm({
+		resolver: yupResolver(loginSchema),
+	})
 
-     const seePassword = (boolean) => {
-          return boolean? setTypeInput("text") : setTypeInput("password")
-     }
+	const seePassword = (boolean) => {
+		return boolean? setTypeInput("text") : setTypeInput("password")
+	}
 
-     const subimitLogin = async (data) => {
+	const subimitLogin = async (data) => {
 
-          sessionLogin(data)
-         
-     }
+		sessionLogin(data)
+	    
+	}
 
-     return (
-          <LoginBackground>
-               <Container>
-                    <div>
-                         <button onClick={() => handleDarkMode()}>Dark</button>
-                         <img src={darkMode? LogoDark : LogoLigth } alt="logo Customer-Connect" />
-                         <button onClick={()=> navigate(-1)}>Voltar</button>
-                    </div>
+	return (
+		<LoginBackground>
+			<Container>
+				<div>
+					<button onClick={() => handleDarkMode()}>Dark</button>
+					<img src={darkMode? LogoDark : LogoLigth } alt="logo Customer-Connect" />
+					<button onClick={()=> navigate(-1)}>Voltar</button>
+				</div>
 
-                    <LoginForm onSubmit={handleSubmit(subimitLogin)} dark={darkMode}>
-                         <h2>Faça Login</h2>
+				<LoginForm onSubmit={handleSubmit(subimitLogin)} dark={darkMode}>
+					<h2>Faça Login</h2>
 
-                         <label htmlFor="emailOrNickname">Email ou Nickname</label>
-                         <Input placeholder=" Digite seu e-mail ou seu nickname"  {...register("emailOrNickname")} />
-                         <p className="textError">{errors.emailOrNickname?.message}</p>
+					<label htmlFor="emailOrNickname">Email ou Nickname</label>
+					<Input placeholder=" Digite seu e-mail ou seu nickname"  {...register("emailOrNickname")} />
+					<p className="textError">{errors.emailOrNickname?.message}</p>
 
-                         <label htmlFor="password">Senha</label>
-                         <div className="boxInputVisiblePassword">
-                              <Input
-                                   type={typeInput}
-                                   {...register("password")}
-                                   placeholder=" Digite sua senha"
-                              />
-                              <p className="textError">{errors.password?.message}</p>
-                              {
-                              typeInput === "text"?
-                                   <Visible className="iconVisiblePassaword" onClick={()=>seePassword(false)} />
-                                   :
-                                   <VisibleOff className="iconVisiblePassaword" onClick={()=>seePassword(true)} />
-                              }
-                         </div>
+					<label htmlFor="password">Senha</label>
+					<div className="boxInputVisiblePassword">
+						<Input
+							type={typeInput}
+							{...register("password")}
+							placeholder=" Digite sua senha"
+						/>
+						<p className="textError">{errors.password?.message}</p>
+						{
+						typeInput === "text"?
+							<Visible className="iconVisiblePassaword" onClick={()=>seePassword(false)} />
+							:
+							<VisibleOff className="iconVisiblePassaword" onClick={()=>seePassword(true)} />
+						}
+					</div>
 
-                         <button type="submit">Login</button>
-                    </LoginForm>
-          
-               </Container>
-          </LoginBackground>
-     )
+					<button type="submit">Login</button>
+				</LoginForm>
+		
+			</Container>
+		</LoginBackground>
+	)
 }
 
 export {Login}

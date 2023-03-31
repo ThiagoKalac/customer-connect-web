@@ -8,12 +8,12 @@ import { RegisterPage } from "../pages/register/register";
 
 const MainRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/dashboard/:name" element={<DashboardPage/>} />
-    </Routes>
+	 <Routes>
+		<Route path="/" element={<LandingPage />} />
+		<Route path="/login" element={<Login />} />
+		<Route path="/register" element={<RegisterPage />} />
+		<Route path="/dashboard/:name" element={<DashboardPage/>} />
+	 </Routes>
   );
 };
 

@@ -53,18 +53,18 @@ const ConfigProvider = ({ children }) => {
      const imagesCarousel = [
       {
            src: darkMode? ConnectedWorldDark : ConnectedWorld,
-           alt: 'Adicione',
-           caption: 'Adicione e gerencie',
+           alt: "Adicione",
+           caption: "Adicione e gerencie",
       },
       {
            src: darkMode? AddDark : Add,
-           alt: 'Mundo Conectado',
-           caption: 'todos seu contatos em um só lugar',
+           alt: "Mundo Conectado",
+           caption: "todos seu contatos em um só lugar",
       },
       {
            src: darkMode? ConnectedDark : Connected,
-           alt: 'Mundo Conectado 2',
-           caption: 'Customer Connect',
+           alt: "Mundo Conectado 2",
+           caption: "Customer Connect",
       },
  ]
 
