@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { toast, Flip } from "react-toastify";
-import { deleteContactApi, updateContactApi } from "../services/requestContact";
+import { createdContactApi, deleteContactApi, updateContactApi } from "../services/requestContact";
 import { ClientContext } from "./clientContext";
 
 const ContactContext = createContext({});
@@ -72,10 +72,45 @@ const ContactProvider = ({ children }) => {
 		}
 	}
 
+	const createdContact = async (token, data) => {
+		const loadingToast = toast.loading("Carregando...");
+		setLoading(true)
+    	try {
+      	const responseApi = await createdContactApi(data, token);
+
+      	toast.update(loadingToast, {
+				render: `Criado o contato do ${responseApi.nickname}`,
+				type: "success",
+				isLoading: false,
+				autoClose: 2000,
+				theme: "dark",
+				position: "top-center",
+				transition: Flip,
+			}); 
+		setTimeout(() => {
+			window.location.reload();	
+		}, 1000)
+    	} catch (error) {
+			console.log(error);
+			toast.update(loadingToast, {
+				render: error.response.data.message,
+				type: "error",
+				isLoading: false,
+				autoClose: 2000,
+				theme: "dark",
+				position: "top-center",
+				transition: Flip,
+			});
+		} finally {
+			setLoading(false)
+		}
+	}
+
   return (
 	  <ContactContext.Provider value={{
 		  updateContact,
-		  deleteContact
+		  deleteContact,
+		  createdContact
 	  }}>
       {children}
     </ContactContext.Provider>

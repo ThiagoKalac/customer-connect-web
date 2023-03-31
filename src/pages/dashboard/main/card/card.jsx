@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import { Input } from "../../../../styles/Input";
 import { CardBackground, CardForm } from "./cardStyle";
 import { FaTrash as Trash } from "react-icons/fa";
-import { updateSchema } from "./schema";
+import { createdContactSchema, updateSchema } from "./schema";
 import * as yup from "yup";
 import { ClientContext } from "../../../../context/clientContext";
 import { ContactContext } from "../../../../context/contactContext";
 
-const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,emailsExtra}) => {
+const Card = ({section,id,nickname="",fullName="", email="",telephone="", telephonesExtra=[],emailsExtra=[]}) => {
   	const [values, setValues] = useState({
     	nickname,
 		fullName,
@@ -19,11 +19,12 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 	
   	const [validationErrors, setValidationErrors] = useState({});
   	const { clientUpdate, clientDelete } = useContext(ClientContext);
-	const { updateContact, deleteContact } = useContext(ContactContext);
+	const { updateContact, deleteContact, createdContact } = useContext(ContactContext);
 	
 	const handleSubmit = async (data, section) => {
+		
 		try {
-			const validate = await updateSchema.validate(data, {
+			const validate = await (section==="Criar Contato"? createdContactSchema:updateSchema).validate(data, {
 			abortEarly: false,
 			});
 			const token = localStorage.getItem("@CustomerConnectToken");
@@ -32,6 +33,8 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 				clientUpdate(token, validate);
 			} else if (section === "Meus Contatos") {
 				updateContact(validate, token, id)
+			} else {
+				createdContact(token, validate)
 			}
 		} catch (error) {
 			if (error instanceof yup.ValidationError) {
@@ -181,7 +184,7 @@ const Card = ({section,id,nickname,fullName, email,telephone, telephonesExtra,em
 					onClick={() => handleSubmit(values, section)}
 					className="action__btn__edit"
 				>
-					Editar
+					{ section === "Criar Contato"? "Criar" : "Editar" }
 				</button>
 				<button onClick={() => handleDelete(section)} className="action__btn__del">
 					Apagar conta

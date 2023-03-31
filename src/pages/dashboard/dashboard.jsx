@@ -9,28 +9,28 @@ import { MenuDash } from "./menu/menu"
 
 
 const DashboardPage = () => {
-     const navigate = useNavigate()
-     const { name } = useParams()
-     const {client} = useContext(ClientContext)
-     
-     const handleClientCorrect = () => {
-          if (!client || client.nickname !== name) {
-                navigate("/")
-          }
-     }
-     handleClientCorrect()
+	const navigate = useNavigate()
+	const { name } = useParams()
+	const {client} = useContext(ClientContext)
+	
+	const handleClientCorrect = () => {
+		if (!client || client.nickname !== name) {
+			 navigate("/")
+		}
+	}
+	handleClientCorrect()
 
-     
-     return (
-          <DashBackground>
-               <HeaderDash />
-               <ContainerDashboard>
-                    <MenuDash />
-                    <div />
-                    <MainDash/>
-               </ContainerDashboard>
-          </DashBackground>
-     )
+	
+	return (
+		<DashBackground>
+			<HeaderDash />
+			<ContainerDashboard>
+				<MenuDash />
+				<div />
+				<MainDash/>
+			</ContainerDashboard>
+		</DashBackground>
+	)
 }
 
 export {DashboardPage}

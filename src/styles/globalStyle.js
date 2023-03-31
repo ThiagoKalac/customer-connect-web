@@ -22,9 +22,9 @@ const GlobalStyle = createGlobalStyle`
       --gray-5: #171717;
 
       /* fonts */
-      --f-logo-1:'Ruda', sans-serif;
-      --f-logo-2:'Gugi', cursive;
-      --text  :'Roboto Mono', monospace;
+      --f-logo-1:"Ruda", sans-serif;
+      --f-logo-2:"Gugi", cursive;
+      --text  :"Roboto Mono", monospace;
 
       /* font-weigth */
       --f-weight-1:700;

@@ -19,7 +19,7 @@ const MainDash = () => {
 	return (
 		<MainBackground>
 			{
-				view === 'profile' ?
+				view === "profile" ?
 				<Card
 					section={"Meu Perfil"}
 					nickname={nickname}
@@ -30,9 +30,9 @@ const MainDash = () => {
 					emailsExtra={emailsExtra}
 				/>
 				:
-				view === 'created' ? <Card section={'Criar Contato'}/>
+				view === "created" ? <Card section={"Criar Contato"}/>
 				:
-				view === 'list' ? (contact?.map(contact => 
+				view === "list" ? (contact?.map(contact => 
 					<div key={contact.id}>
 						<Card
 							section={"Meus Contatos"}
