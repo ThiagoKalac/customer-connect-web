@@ -1,5 +1,6 @@
-import { ClientProvider } from "./context/clientContext"
+import { ClientProvider } from "./context/clientContext";
 import { ConfigProvider } from "./context/configContext";
+import { ContactProvider } from "./context/contactContext";
 import { MainRoutes } from "./routes/mainRoutes";
 import { GlobalStyle } from "./styles/globalStyle";
 import { ResetCSS } from "./styles/resetCSS";
@@ -10,10 +11,12 @@ function App() {
   return (
     <ConfigProvider>
       <ClientProvider>
-        <ResetCSS />
-        <GlobalStyle />
-        <MainRoutes />
-        <ToastContainer/>
+        <ContactProvider>
+          <ResetCSS />
+          <GlobalStyle />
+          <MainRoutes />
+          <ToastContainer />
+        </ContactProvider>
       </ClientProvider>
     </ConfigProvider>
   );
